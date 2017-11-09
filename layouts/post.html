@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+</head>
+<body>
+  <header>
+    <p>
+      <a href="/">Home</a>
+    </p>
+
+  </header>
+  <h1>{{ title }}</h1>
+  <time>{{ date }}</time>
+
+      <h1>TOC</h1>
+       <ul>
+         {{#each toc}}
+         <li>
+           <a href="#{{this.id}}"> {{this.text}} </a>
+           {{#if this.children}}
+           <ul>
+             {{#each this.children}}
+             <li>
+               <a href="#{{this.id}}"> {{this.text}} </a>
+             </li>
+             {{/each}}
+           </ul>
+           {{/if}}
+         </li>
+         {{/each}}
+       </ul>
+  {{{ contents }}}
+
+  <footer>
+    <p>Generated with {{ generator }} &mdash; <a href="{{ url }}">{{ url }}</a></p>
+  </footer>
+</body>
+</html>
