@@ -6,6 +6,8 @@ var watch = require('metalsmith-watch');
 var serve = require('metalsmith-serve');
 var autotoc = require('metalsmith-autotoc');
 var collections = require('metalsmith-collections');
+var tags = require('metalsmith-tags');
+var excerpts = require('metalsmith-excerpts');
 
 Metalsmith(__dirname)
   .metadata({
@@ -28,6 +30,35 @@ Metalsmith(__dirname)
     breaks:true
   }))
   .use(permalinks( {pattern: ':slug'}))
+  .use(tags({
+    // yaml key for tag list in you pages (front matter: tags: )
+    handle: 'tags',
+    // path for result pages
+    path:'tags/:tag.html',
+    //path:':tag.html',
+    // this is missing in doc
+    //pathPage:'tags/:tag/:num/index.html',
+    pathPage:'tags/:tag/:num/index.html',
+    // layout to use for tag listing
+    //layout:'/partials/tag.hbt',
+    layout:'tag.html',
+    // provide posts sorted by 'date' (optional)
+    sortBy: 'date',
+    // sort direction (optional)
+    reverse: true,
+    // skip updating metalsmith's metadata object.
+    // useful for improving performance on large blogs
+    // (optional)
+    skipMetadata: false,
+    // metadatakey: Use a non-default key in the metadata. Useful if you you want to
+    // have two sets of tags in different sets with metalsmith-branch.
+    //metadataKey: "category",  (DEFAULT: tags)
+    // Any options you want to pass to the [slug](https://github.com/dodo/node-slug) package.
+    // Can also supply a custom slug function.
+    // slug: function(tag) { return tag.toLowerCase() }
+    //slug: {mode: 'rfc3986'}
+  }))
+  .use(excerpts())
  .use(autotoc({selector: 'h1, h2'}))
   .use(layouts({
     engine: 'handlebars',
@@ -44,3 +75,5 @@ Metalsmith(__dirname)
     if (err) { throw err; }
   });
 // .use(permalinks( {}))
+/*
+  */

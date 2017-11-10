@@ -11,18 +11,20 @@
       <a href="/">Home</a>
     </p>
   </header>
+
   <h1>{{ title }}</h1>
   <p>{{ description }}</p>
 
   {{{ contents }}}
-  <h1> COLLECTIONS v2 </h1>
+  <h1> COLLECTIONS </h1>
   <ul>
 
-                {{#each collections.posts}}
-                <li>
-                  <a href='{{path}}'>(permalink:{{this.permalink}})(path:{{path}}) {{title}}</a>
-                </li>
-                {{/each}}
+    {{#each collections.posts}}
+    <li>
+      <a href='{{path}}'>{{title}}</a>
+      {{{excerpt}}}
+    </li>
+    {{/each}}
 
 </ul>
   <footer>

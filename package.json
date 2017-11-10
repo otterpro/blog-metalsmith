@@ -6,10 +6,12 @@
     "metalsmith": "^2.1.0",
     "metalsmith-autotoc": "^0.1.5",
     "metalsmith-collections": "^0.9.0",
+    "metalsmith-excerpts": "^1.2.0",
     "metalsmith-layouts": "^1.4.1",
     "metalsmith-markdown": "^0.2.1",
     "metalsmith-permalinks": "^0.5.0",
     "metalsmith-serve": "0.0.7",
+    "metalsmith-tags": "^2.0.0",
     "metalsmith-watch": "^1.0.3"
   }
 }

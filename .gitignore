@@ -1,2 +1,5 @@
 src/*
+!src/robots.txt
 public/*
+!public/favicon.ico
+!public/robots.txt
